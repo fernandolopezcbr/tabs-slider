@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Tabs</title>
+    <style>
+        *{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+        }
+
+        a{
+            -webkit-tap-highlight-color: rgb(0, 0, 0, 0);
+        }
+
+        body{
+            width: 100%;
+            min-height: 100vh;
+            background-color: linear-gradient(95deg, #c9d6ff,#e2e2e2);
+            font-family: sans-serif;
+            line-height: 1.4;
+        }
+
+       .container{
+        width: 90%;
+        margin: 0 auto;
+       }
+
+       header{
+        background-color: #439cef;
+        color: #fff;
+       }
+
+       header h1{
+        padding:  40px 0;
+       }
+
+       header .tabs{
+        display: flex;
+        overflow-y: auto;
+       }
+
+       header .tabs a{
+        display: block;
+        padding: 20px 40px;
+        font-size: 21px;
+        outline: none;
+        white-space: nowrap;
+        cursor: pointer;
+       }
+
+       .tabs a.active{
+        border-bottom: 4px solid #ff9346;
+       }
+
+       /*REMOVE SCROLL BAR*/
+
+       .tabs::-webkit-scrollbar{
+        height: 0;
+
+       }
+
+       /*TABCONTENTS*/
+
+       .tabcontent{
+        padding: 40px 0;
+        display: none;
+        animation: fadeEffect 1s;
+       }
+
+       .tabcontent:first-of-type{
+        display: block;
+       }
+
+       .tabcontent h3
+       .tabcontent p
+       {
+        font-size: 21px;
+        margin: 10px 0;
+       }
+
+       /*ANIMATIONS*/
+
+       @keyframes fadeEffect{
+        from{
+            opacity: 0;
+        }
+
+        to{
+            opacity: 1;
+        }
+       }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Responsive Tabs</h1>
+        <div class="tabs">
+            <a role="button" tabindex="0" class="active" onclick="openTab(event, 'tab1')">Tab 1</a>
+            <a role="button" tabindex="0" onclick="openTab(event, 'tab2')">Tab 2</a>
+            <a role="button" tabindex="0" onclick="openTab(event, 'tab3')">Tab 3</a>
+            <a role="button" tabindex="0" onclick="openTab(event, 'tab4')">Tab 4</a>
+        </div>
+
+        </div>
+    </header>
+
+    <div class="tabcontent container" id="tab1">
+        <h3>Tab 1</h3>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, in? Expedita, porro facilis laboriosam modi temporibus maiores nulla libero. Porro exercitationem modi rem adipisci quam delectus iure veritatis libero deleniti!
+        </p>
+    </div>
+
+    <div class="tabcontent container" id="tab2">
+        <h3>Tab 2</h3>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, in? Expedita, porro facilis laboriosam modi temporibus maiores nulla libero. Porro exercitationem modi rem adipisci quam delectus iure veritatis libero deleniti!
+        </p>
+    </div>
+    <div class="tabcontent container" id="tab3">
+        <h3>Tab 3</h3>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, in? Expedita, porro facilis laboriosam modi temporibus maiores nulla libero. Porro exercitationem modi rem adipisci quam delectus iure veritatis libero deleniti!
+        </p>
+    </div>
+    <div class="tabcontent container" id="tab4">
+        <h3>Tab 4</h3>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, in? Expedita, porro facilis laboriosam modi temporibus maiores nulla libero. Porro exercitationem modi rem adipisci quam delectus iure veritatis libero deleniti!
+        </p>
+    </div>
+
+    <script>
+        const tabcontents = document.querySelectorAll(".tabcontent");
+        const tabLinks = document.querySelectorAll(".tabs a");
+
+        function openTab(event ,tabName){
+            /*REMOVE ALL TABCONTENTS*/
+            tabcontents.forEach((tabcontent)=> (tabcontent.style.display = "none"));
+
+            /*REMOVE TABLINKS ACTIVE CLASSES*/
+            tabLinks.forEach((tabLink)=> tabLink.classList.remove("active"));
+
+            /**/
+            event.currentTarget.classList.add("active");
+            document.getElementById(tabName).style.display = "block";
+
+        }
+    </script>
+</body>
+</html>
